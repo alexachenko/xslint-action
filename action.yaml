@@ -10,7 +10,8 @@ inputs:
   args:
     description: 'Files and directories to check'
     required: true
-    default: '.'
+    default: |-
+      .
   suppress:
     description: 'Checks to suppress'
     required: false
