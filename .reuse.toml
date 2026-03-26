@@ -1,0 +1,8 @@
+[parse]
+  ignore = [
+    ".idea/",
+    "*.iml",
+    ".git/",
+    "LICENSES/",
+    ".reuse/",
+  ]
