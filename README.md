@@ -1,6 +1,3 @@
-# SPDX-FileCopyrightText: Copyright (c) 2026 Max Trunnikov
-# SPDX-License-Identifier: MIT
-
 # xslint-action
 
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE.txt)
