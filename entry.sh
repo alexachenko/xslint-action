@@ -6,9 +6,6 @@ set -euo pipefail
 
 cd "${GITHUB_WORKSPACE}"
 
-agrs=()
-suppress=()
-
 IFS=$'\n'
 for arg in $1; do
   args+=("${arg}")
