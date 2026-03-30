@@ -17,11 +17,4 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Run entry.sh
-        run: ./entry.sh
-        env:
-          args: |
-            xsl-packs/xsl-with-no-violations.xsl
-            xsl-packs/xsl-with-some-violations.xsl
-          suppress: |
-            empty-content-in-instruction
-            template-match-starts-with-double-slash
+        run: ./entry.sh 'xsl-packs/xsl-with-no-violations.xsl\nxsl-packs/xsl-with-some-violations.xsl' 'empty-content-in-instruction\ntemplate-match-starts-with-double-slash'
