@@ -11,6 +11,7 @@ all: test
 test:
 	docker build . -t xslint-action
 	output=$$(docker run --rm -v "$$(pwd):/w" -e HOME -e GITHUB_WORKSPACE='.' xslint-action $$'xsl-packs/xsl-with-no-violations.xsl\nxsl-packs/xsl-with-some-violations.xsl' $$'empty-content-in-instruction\ntemplate-match-starts-with-double-slash' 2>&1 || true)
+	echo "$$output"
 	for expected in \
 		"Processed files: 2" \
 		"Defects found: 4" \
