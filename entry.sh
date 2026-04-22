@@ -7,6 +7,27 @@ set -euo pipefail
 cd "${GITHUB_WORKSPACE}"
 
 IFS=$'\n'
+if [ -n "${1:-}" ]; then
+  for arg in $1; do
+    args+=("${arg}")
+  done
+fi
+
+if [ -n "${2:-}" ]; then
+  for sup in $2; do
+    suppress+=("--suppress=${sup}")
+  done
+fi
+
+IFS=' '
+xslint "${args[@]}" "${suppress[@]}"
+
+
+set -euo pipefail
+
+cd "${GITHUB_WORKSPACE}"
+
+IFS=$'\n'
 for arg in $1; do
   args+=("${arg}")
 done

@@ -6,7 +6,7 @@
 SHELL := bash
 .PHONY: all test clean
 
-all: test
+all: test test-default
 
 test:
 	docker build . -t xslint-action
@@ -25,4 +25,17 @@ test:
     do \
       	echo "$$output" | grep -q "$$absent" && (echo "Unexpected, but found '$$absent'" && exit 1;) \
     done
+	docker rmi xslint-action
+
+test-default:
+	docker build . -t xslint-action
+	output=$$(docker run --rm -v "$$(pwd):/w" -e HOME -e GITHUB_WORKSPACE='.' xslint-action 2>&1 || true)
+	echo "$$output"
+	for expected in \
+		"Processed files: 2" \
+		"Defects found: 7" \
+		"Directories and files to process: ."; \
+	do \
+		echo "$$output" | grep -q "$$expected" || (echo "Expected, but not found '$$expected'" && exit 1;) \
+	done
 	docker rmi xslint-action
