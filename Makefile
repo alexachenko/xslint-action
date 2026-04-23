@@ -6,7 +6,7 @@
 SHELL := bash
 .PHONY: all test clean
 
-all: test test-default
+all: test test-default test-with-arg test-with-suppress
 
 test:
 	docker build . -t xslint-action
